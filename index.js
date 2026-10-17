@@ -1,13 +1,33 @@
-import React, { Fragment } from "react";
+import React, { Fragment, createContext, useReducer } from "react";
 import Layout from "../layout";
-import SingleWishProduct from "./SingleWishProduct";
+import {
+  productDetailsState,
+  productDetailsReducer,
+} from "./ProductDetailsContext";
+import Details from "./Details";
 
-const WishList = () => {
+export const ProductDetailsContext = createContext();
+
+const DetailsComponent = () => {
   return (
     <Fragment>
-      <Layout children={<SingleWishProduct />} />
+      <Details />
     </Fragment>
   );
 };
 
-export default WishList;
+const ProductDetails = (props) => {
+  const [data, dispatch] = useReducer(
+    productDetailsReducer,
+    productDetailsState
+  );
+  return (
+    <Fragment>
+      <ProductDetailsContext.Provider value={{ data, dispatch }}>
+        <Layout children={<DetailsComponent />} />
+      </ProductDetailsContext.Provider>
+    </Fragment>
+  );
+};
+
+export default ProductDetails;
