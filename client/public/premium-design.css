@@ -1,0 +1,97 @@
+/* Hayroo premium design foundation
+   Import this stylesheet after the existing application styles.
+   Motion respects the user's reduced-motion preference. */
+
+:root {
+  color-scheme: light;
+  --hayroo-bg: #f5f5f7;
+  --hayroo-surface: #ffffff;
+  --hayroo-text: #17171a;
+  --hayroo-muted: #6e6e73;
+  --hayroo-border: rgba(20, 20, 25, 0.09);
+  --hayroo-accent: #6657e8;
+  --hayroo-accent-hover: #5143ce;
+  --hayroo-radius-sm: 12px;
+  --hayroo-radius-md: 18px;
+  --hayroo-radius-lg: 26px;
+  --hayroo-shadow-card: 0 8px 30px rgba(20, 20, 35, 0.06);
+  --hayroo-shadow-hover: 0 18px 48px rgba(20, 20, 35, 0.12);
+  --hayroo-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --hayroo-duration: 220ms;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--hayroo-bg);
+  color: var(--hayroo-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a, [role="button"] {
+  transition:
+    transform var(--hayroo-duration) var(--hayroo-ease),
+    box-shadow var(--hayroo-duration) var(--hayroo-ease),
+    background-color var(--hayroo-duration) var(--hayroo-ease),
+    color var(--hayroo-duration) var(--hayroo-ease),
+    border-color var(--hayroo-duration) var(--hayroo-ease);
+}
+
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--hayroo-accent) 65%, white);
+  outline-offset: 3px;
+}
+
+.hayroo-surface {
+  background: var(--hayroo-surface);
+  border: 1px solid var(--hayroo-border);
+  border-radius: var(--hayroo-radius-md);
+  box-shadow: var(--hayroo-shadow-card);
+}
+
+.hayroo-interactive-card {
+  transition:
+    transform 280ms var(--hayroo-ease),
+    box-shadow 280ms var(--hayroo-ease),
+    border-color 280ms var(--hayroo-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hayroo-interactive-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hayroo-shadow-hover);
+    border-color: rgba(102, 87, 232, 0.22);
+  }
+}
+
+.hayroo-gradient-text {
+  color: var(--hayroo-accent);
+  background: linear-gradient(110deg, #6657e8 5%, #a35be7 55%, #e17ab7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hayroo-fade-up {
+  animation: hayroo-fade-up 560ms var(--hayroo-ease) both;
+}
+
+@keyframes hayroo-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
