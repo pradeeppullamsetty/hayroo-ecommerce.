@@ -1,0 +1,64 @@
+/* Hayroo premium design foundation — progressive, framework-compatible overrides. */
+:root {
+  --hayroo-ink: #15151b;
+  --hayroo-muted: #70717d;
+  --hayroo-paper: #f7f7fa;
+  --hayroo-surface: #ffffff;
+  --hayroo-line: rgba(22, 22, 32, .09);
+  --hayroo-violet: #7567f8;
+  --hayroo-violet-dark: #5d4de0;
+  --hayroo-mint: #bdf4df;
+  --hayroo-radius: 20px;
+  --hayroo-radius-lg: 28px;
+  --hayroo-shadow: 0 12px 36px rgba(25, 25, 50, .07);
+  --hayroo-shadow-hover: 0 22px 55px rgba(25, 25, 50, .13);
+  --hayroo-ease: cubic-bezier(.2, .75, .25, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  color: var(--hayroo-ink);
+  background: var(--hayroo-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+a { transition: color .22s var(--hayroo-ease), opacity .22s var(--hayroo-ease); }
+button, .btn, [role="button"] {
+  transition: transform .22s var(--hayroo-ease), box-shadow .22s var(--hayroo-ease),
+    background-color .22s var(--hayroo-ease), border-color .22s var(--hayroo-ease), color .22s var(--hayroo-ease);
+}
+button:active, .btn:active, [role="button"]:active { transform: scale(.975); }
+:focus-visible { outline: 3px solid rgba(117, 103, 248, .55); outline-offset: 3px; }
+
+/* A consistent premium finish for legacy Bootstrap components and existing cards. */
+.card, .modal-content, .dropdown-menu, .list-group, .alert {
+  border-color: var(--hayroo-line);
+  border-radius: var(--hayroo-radius);
+}
+.card { box-shadow: 0 5px 22px rgba(25, 25, 50, .035); transition: box-shadow .28s var(--hayroo-ease), transform .28s var(--hayroo-ease); }
+.card:hover { box-shadow: var(--hayroo-shadow); }
+.modal-content { overflow: hidden; box-shadow: 0 24px 80px rgba(18, 18, 35, .18); }
+.dropdown-menu { padding: .5rem; box-shadow: var(--hayroo-shadow); }
+.dropdown-item { border-radius: 10px; transition: background-color .18s ease, color .18s ease; }
+.form-control, .custom-select, select, textarea, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]) {
+  border-radius: 12px;
+  border-color: rgba(22, 22, 32, .14);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.form-control:focus, .custom-select:focus, select:focus, textarea:focus, input:focus {
+  border-color: var(--hayroo-violet);
+  box-shadow: 0 0 0 4px rgba(117, 103, 248, .12);
+}
+.btn-primary { background: var(--hayroo-violet); border-color: var(--hayroo-violet); }
+.btn-primary:hover, .btn-primary:focus { background: var(--hayroo-violet-dark); border-color: var(--hayroo-violet-dark); box-shadow: 0 8px 22px rgba(117, 103, 248, .23); }
+img { max-width: 100%; }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-1px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
